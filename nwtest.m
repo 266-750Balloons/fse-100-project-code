@@ -1,3 +1,6 @@
+% Initial test of ultrasonic sensor
+% Drew Stephens, 2024/10/17
+
 try
     brick = ConnectBrick( "WAZ" );
 catch

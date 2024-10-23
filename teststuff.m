@@ -1,3 +1,6 @@
+% Another ultrasonic test
+% Ben Harper, 2024
+
 larry = brick.UltrasonicDist( 4 );
 
 total = 0;

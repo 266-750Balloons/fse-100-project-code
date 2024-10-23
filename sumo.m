@@ -1,3 +1,7 @@
+% I think this source file initially held the test code for motion control, but it 
+% now appears to hold more testing of the ultrasonic sensor.
+% Ben Harper, 2024
+
 larry = brick.UltrasonicDist( 4 );
 total = 0;
 while true

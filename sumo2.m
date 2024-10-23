@@ -1,3 +1,6 @@
+% Our code used for the SUMO robot battle
+% Ben Harper, Drew Stephens, 2024
+
 global key 
 InitKeyboard();
 
