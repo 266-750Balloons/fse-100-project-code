@@ -22,7 +22,7 @@ while true
         pause(1);
         brick.StopMotor('D', 'Brake');
         brick.StopMotor('A', 'Brake');
-        brick.MoveMotor('D', 5);
+        brick.MoveMotor('D', 3);
         brick.MoveMotor('A', -90);
         pause(2);
 
@@ -31,7 +31,11 @@ while true
         brick.MoveMotor('D', -70);
         brick.MoveMotor('A', -70);
         larry = brick.UltrasonicDist( 4 );
+        total = total + 1;
     end
-   
-    total = total + 1;
+    if total >= 300
+        brick.StopMotor('D', 'Brake');
+        brick.StopMotor('A', 'Brake');
+        break;
+    end
 end

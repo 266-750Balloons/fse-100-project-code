@@ -4,24 +4,38 @@
 
 larry = brick.UltrasonicDist( 4 );
 total = 0;
+
 while true
-    while larry > 5
+    larry = brick.UltrasonicDist( 4 );
+   
+    while larry > 7
         disp( larry );
-        brick.MoveMotor('D',-70);
-        brick.MoveMotor('A',-70);
+        brick.MoveMotor('D', -70);
+        
+        brick.MoveMotor('A', -77);
         larry = brick.UltrasonicDist( 4 );
         total = total + 1;
     end
-    x = 2;
-    while larry <= 5
-        x = 20;
-        while x > 0
-            brick.MoveMotorAngleAbs('D', 200, 270, 'Brake');
-            brick.MoveMotor('D',70);
-            x = x - 1;
-            total = total + 1;
-        end
+   
+    if larry <= 7
+        brick.MoveMotor('D', 30);
+        brick.MoveMotor('A', 30);
+        pause(1);
+        brick.MoveMotorAngleAbs('D', -70, 10, 'Brake');
+        brick.MoveMotor('D', -60);
+        brick.MoveMotor('A', -90);
+        pause(2);
+
         brick.StopMotor('D', 'Brake');
         brick.StopMotor('A', 'Brake');
+        brick.MoveMotor('D', -70);
+        brick.MoveMotor('A', -70);
+        larry = brick.UltrasonicDist( 4 );
+        total = total + 1;
+    end
+    if total >= 500
+        brick.StopMotor('D', 'Brake');
+        brick.StopMotor('A', 'Brake');
+        break;
     end
 end
