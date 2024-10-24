@@ -26,11 +26,8 @@ while true
         % brick.MoveMotor('D', -70);
         % brick.MoveMotor('A', -77);
 
-        brick.StopMotor('D', 'Brake');
-        brick.StopMotor('A', 'Brake');
-
         brick.GyroCalibrate(3);
-        bot_angle = brick.GyroAngle(3);
+        bot_angle = brick.GyroAngygle(3);
         while abs(bot_angle) < 90
             brick.MoveMotor('D', -70);
             brick.MoveMotor('A', 0);
