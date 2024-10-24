@@ -30,9 +30,9 @@ while true
         bot_angle = brick.GyroAngle(3);
         while abs(bot_angle) < 90
             brick.MoveMotor('D', 70);
-            brick.MoveMotor('A', 0);
+            brick.StopMotor( 'A', 'Coast');
             bot_angle = brick.GyroAngle(3);
-            print( bot_angle );
+            print( "angle:" + bot_angle );
         end
         pause(2);
 
