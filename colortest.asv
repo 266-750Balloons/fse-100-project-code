@@ -1,0 +1,29 @@
+color = brick.ColorCode(1);
+brick.MoveMotor('D', -62);
+brick.MoveMotor('A', -61.5);
+
+while true
+    brick.MoveMotor('D', -62);
+brick.MoveMotor('A', -61.5);
+    if color == 5
+        brick.StopMotor('D', 'Brake');
+        brick.StopMotor('A', 'Brake');
+        pause(1)
+        brick.beep();
+    end
+    if color == 2
+        brick.StopMotor('D', 'Brake');
+        brick.StopMotor('A', 'Brake');
+        pause(1)
+        brick.beep();
+        brick.beep();
+    end
+    if color == 3
+        brick.StopMotor('D', 'Brake');
+        brick.StopMotor('A', 'Brake');
+        pause(1)
+        brick.beep();
+        brick.beep();
+        brick.beep();
+    end
+end
