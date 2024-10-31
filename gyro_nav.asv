@@ -1,8 +1,6 @@
 % Code to navigate accurately using the gyroscope
 % Ben Harper, Drew Stephens, 2024
 
-brick.GyroCalibrate(3);
-
 % When moving forward, the robot will try and maintain this angle. It is changes by the turn functions
 
 global heading;
@@ -57,10 +55,10 @@ function good = goForwardUntil( brick_obj, min_distance )
     bot_angle = brick_obj.GyroAngle(3);
 
     while larry > min_distance
-            if bot_angle < bot_angle
+            if bot_angle < 0
                 right_speed = right_speed - 0.1;
             end
-            if bot_angle > bot_angle
+            if bot_angle > 0
                 left_speed = left_speed - 0.1;
             end
     

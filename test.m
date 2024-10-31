@@ -26,41 +26,37 @@ function good = turnRight( brick_obj )
     good = 1;
 end
 
-function good = goForwardUntil( min_distance )
-    larry = brick.UltrasonicDist( 4 );
-
-    while larry > min_distance
-            if bot_angle < 0
-                right_speed = right_speed - 0.1;
-            end
-            if bot_angle > 0
-                left_speed = left_speed - 0.1;
-            end
-    
-            disp( larry );
-    
-            brick.MoveMotor('D', left_speed);
-            brick.MoveMotor('A', right_speed);
-    
-            larry = brick.UltrasonicDist( 4 );
-    
-            bot_angle = brick.GyroAngle(3);
-    end
-end
 
 
-
-brick.GyroCalibrate(3);
+% brick.GyroCalibrate(3);
 bot_angle = brick.GyroAngle(3);
 
-goForwardUntil( 5 );
+% goForwardUntil( 5 );
 
-% joe = turnLeft(brick);
-bob = turnRight(brick);
+min_distance = 5;
 
 larry = brick.UltrasonicDist( 4 );
 
-goForwardUntil(5);
+while larry > min_distance
+        if bot_angle < 0
+            right_speed = right_speed - 0.1;
+        end
+        if bot_angle > 0
+            left_speed = left_speed - 0.1;
+        end
+
+        disp( larry );
+
+        brick.MoveMotor('D', left_speed);
+        brick.MoveMotor('A', right_speed);
+
+        larry = brick.UltrasonicDist( 4 );
+
+        bot_angle = brick.GyroAngle(3);
+end
+
+joe = turnLeft(brick);
+% bob = turnRight(brick);
 
 brick.StopMotor('D', 'Brake');
 brick.StopMotor('A', 'Brake');

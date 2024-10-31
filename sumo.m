@@ -18,6 +18,7 @@ while true
     end
    
     if larry <= 15
+        
         brick.MoveMotor('D', 30);
         brick.MoveMotor('A', 30);
         pause(1);
