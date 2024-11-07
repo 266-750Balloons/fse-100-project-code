@@ -7,34 +7,51 @@ total = 0;
 color = brick.ColorCode(1);
 
 while true
+    disp( "new loop" );
+    total = 0;
+    pause(0.1);
     larry = brick.UltrasonicDist( 4 );
-   
+    disp(total);
+    disp( "Larry is:" + larry );
     while larry > 15
-        disp( larry );
         brick.MoveMotor('D', -62);
         brick.MoveMotor('A', -61.5);
         larry = brick.UltrasonicDist( 4 );
-        total = total + 1;
+        total = total + .075;
+        disp(total);
+        disp( "Larry is:" + larry );
     end
    
     if larry <= 15
-        
-        brick.MoveMotor('D', 30);
-        brick.MoveMotor('A', 30);
-        pause(1);
-        brick.MoveMotor('A', -100);
-        pause(2);
+        if (total <= 3)
+            brick.MoveMotor('A',100);
+            pause(2)
+            brick.StopMotor('D', 'Brake');
+            brick.StopMotor('A', 'Brake');
+            disp(total);
+            disp( "total <= 3" );
+        else
+            brick.MoveMotor('D', 30);
+            brick.MoveMotor('A', 30);
+            pause(1);
+            brick.MoveMotor('A', -100);
+            pause(2);
 
-        brick.StopMotor('D', 'Brake');
-        brick.StopMotor('A', 'Brake');
-        total = total + 4;
+            brick.StopMotor('D', 'Brake');
+            brick.StopMotor('A', 'Brake');
+            disp(total);
+            disp( "else" );
+
+        end
+    
     end
     if color == 5
         brick.StopMotor('D', 'Brake');
         brick.StopMotor('A', 'Brake');
         pause(1)
+        disp(total);
     end
-    if total >= 170
+    if total >= 500
         brick.StopMotor('D', 'Brake');
         brick.StopMotor('A', 'Brake');
         break;
