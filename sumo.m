@@ -3,6 +3,7 @@
 % Ben Harper, 2024
 
 larry = brick.UltrasonicDist( 4 );
+disp( "larry: " + larry );
 total = 0;
 color = brick.ColorCode(1);
 
@@ -13,7 +14,8 @@ while true
     larry = brick.UltrasonicDist( 4 );
     disp(total);
     disp( "Larry is:" + larry );
-    while larry > 15
+    % while larry > 15 || larry == 0
+    while larry > 15 || larry == 0
         brick.MoveMotor('D', -62);
         brick.MoveMotor('A', -61.5);
         larry = brick.UltrasonicDist( 4 );
@@ -21,6 +23,8 @@ while true
         disp(total);
         disp( "Larry is:" + larry );
     end
+
+    disp( "Loop broken with Larry = " + larry);
    
     if larry <= 15
         if (total <= 3)

@@ -5,10 +5,10 @@ color = brick.ColorCode(1);
 hasMovedBackward = false;
 actionTaken = false;
 
-% Stop both motors initially to prevent startup movement
+% Stop both motors initially
 brick.StopMotor('A', 'Brake');
 brick.StopMotor('D', 'Brake');
-pause(1); % Initial pause to ensure stability
+pause(1); % Initial pause for stability
 
 while true
     % Read distance sensor and display current state
