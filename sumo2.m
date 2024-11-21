@@ -8,32 +8,34 @@ while 1
     pause(0.1);
     switch key
         case 'downarrow'
-            brick.MoveMotor('D',70);
-            brick.MoveMotor('A',70);
+            brick.MoveMotor('D',40);
+            brick.MoveMotor('A',40);
         case 'uparrow'
-            brick.MoveMotor('D',-70);
-            brick.MoveMotor('A',-70);
+            brick.MoveMotor('D',-40);
+            brick.MoveMotor('A',-40);
         case 'leftarrow'
-            brick.MoveMotorAngleAbs('D', 200, 270, 'Brake');
-            brick.MoveMotor('D',70);
+            brick.MoveMotor('D',40);
+            brick.StopMotor('A','Brake')
         case 'rightarrow'
-            brick.MoveMotorAngleAbs('A', 200, -270, 'Brake');
-            brick.MoveMotor('A',70);
+            brick.MoveMotor('A',40);
+            brick.StopMotor('D','Brake')
         case 'p'
             brick.StopMotor('D', 'Brake');
             brick.StopMotor('A', 'Brake');
             brick.StopMotor('B', 'Brake');
             brick.StopMotor('C', 'Brake');
             break;
-        case 's'
-            brick.MoveMotor('B',-40);
-            pause(0.05);
-            brick.MoveMotor('C',40);
-            pause(0.05);
         case 'w'
-            brick.MoveMotor('B',40);
+            brick.MoveMotor('B',-10);
             pause(0.05);
-            brick.MoveMotor('C',-40);
+        case 's'
+            brick.MoveMotor('B',10);
+            pause(0.05);
+        case 'u'
+            brick.MoveMotor('C',-10);
+            pause(0.05);
+        case 'h'
+            brick.MoveMotor('C',10);
             pause(0.05);
         otherwise
             brick.MoveMotor('D',0);

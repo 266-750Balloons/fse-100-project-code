@@ -1,0 +1,58 @@
+total = 0;
+
+while true
+    larry = brick.UltrasonicDist(1);
+    color = brick.ColorCode(3);
+
+    if color == 5
+        brick.StopMotor('A', 'Brake');
+        brick.StopMotor('B', 'Brake');
+        pause(1);
+        continue;
+    end
+
+    if brick.TouchPressed(3)
+        brick.MoveMotorAngleRel('A', -50, 180, 'Brake');
+        brick.MoveMotorAngleRel('B', -50, 180, 'Brake');
+        brick.WaitForMotor('A');
+        brick.WaitForMotor('B');
+
+        brick.MoveMotorAngleRel('B', 50, 180, 'Brake'); % Right motor forward
+        brick.MoveMotorAngleRel('A', 50, -180, 'Brake'); % Left motor backward
+        brick.WaitForMotor('A');
+        brick.WaitForMotor('B');
+        continue;
+    end
+
+    if larry <= 11
+        brick.MoveMotorAngleRel('A', 50, 180, 'Brake'); % Left motor forward
+        brick.MoveMotorAngleRel('B', 50, 180, 'Brake'); % Right motor forward
+        brick.WaitForMotor('A');
+        brick.WaitForMotor('B');
+
+        brick.MoveMotorAngleRel('B', 50, 180, 'Brake'); % Right motor forward
+        brick.MoveMotorAngleRel('A', 50, -180, 'Brake'); % Left motor backward
+        brick.WaitForMotor('A');
+        brick.WaitForMotor('B');
+
+        brick.MoveMotorAngleRel('A', 50, 210, 'Brake'); % Left motor forward
+        brick.MoveMotorAngleRel('B', 50, 210, 'Brake'); % Right motor forward
+        brick.WaitForMotor('A');
+        brick.WaitForMotor('B');
+    else
+        tStart = tic;
+        while toc(tStart) < 2
+            brick.MoveMotor('A', 50); 
+            brick.MoveMotor('B', 50);    
+        end
+        brick.StopMotor('A', 'Brake');
+        brick.StopMotor('B', 'Brake');
+    end
+
+    total = total + 1;
+    if total >= 500
+        brick.StopMotor('A', 'Brake');
+        brick.StopMotor('B', 'Brake');
+        break;
+    end
+end
