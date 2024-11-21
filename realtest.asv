@@ -1,0 +1,2 @@
+brick.MoveMotor('A',200)
+pause(1)
