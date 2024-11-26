@@ -45,12 +45,24 @@ while true
         pause(1)
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
-        pause(1)
-
+        pause(0.5)
+    elseif (larry > 25) && (larry < 40)
+        brick.MoveMotor('D',40);
+        brick.StopMotor('A','Brake')
+        pause(0.1)
+        brick.MoveMotor('D',-40);
+        brick.MoveMotor('A',-40);
+        pause(0.2)
+    elseif (larry < 15)
+        brick.MoveMotor('A',40);
+        brick.StopMotor('D','Brake')
+        brick.MoveMotor('D',-40);
+        brick.MoveMotor('A',-40);
+        pause(0.2)
     else
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
-        pause(0.5)
+        pause(0.3)
         brick.StopMotor('A', 'Brake');
         brick.StopMotor('D', 'Brake');
         larry = brick.UltrasonicDist(1);
