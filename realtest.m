@@ -1,4 +1,4 @@
 while true
-    larry = brick.UltrasonicDist(1);
-    disp(larry)
+    touch = brick.TouchPressed(4);
+    disp(touch)
 end

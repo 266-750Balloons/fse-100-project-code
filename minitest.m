@@ -6,7 +6,6 @@ while true
     larry = brick.UltrasonicDist(1);
     color = brick.ColorCode(3);
     touch = brick.TouchPressed(4);
-    larry = brick.UltrasonicDist(1);
     disp(larry)
 
     if color == 5
@@ -32,7 +31,6 @@ while true
         brick.MoveMotor('A',60);
         brick.MoveMotor('D',-10);
         pause(1)
-        continue;
     elseif (larry >= 40)
         brick.StopMotor('A', 'Brake');
         brick.StopMotor('D', 'Brake');
@@ -46,26 +44,27 @@ while true
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
         pause(0.5)
-    elseif (larry > 25) && (larry < 40)
+    elseif (larry > 28) && (larry < 40)
         brick.MoveMotor('D',40);
         brick.StopMotor('A','Brake')
-        pause(0.1)
+        pause(0.2)
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
-        pause(0.2)
-    elseif (larry < 15)
+        pause(0.1)
+    elseif (larry < 12)
         brick.MoveMotor('A',40);
         brick.StopMotor('D','Brake')
+        pause(0.2)
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
-        pause(0.2)
+        pause(0.1)
     else
         brick.MoveMotor('D',-40);
         brick.MoveMotor('A',-40);
         pause(0.3)
         brick.StopMotor('A', 'Brake');
         brick.StopMotor('D', 'Brake');
-        larry = brick.UltrasonicDist(1);
-        end
+        pause(1)
+    end
 
 end
